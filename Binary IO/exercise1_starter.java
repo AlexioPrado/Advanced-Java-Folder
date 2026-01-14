@@ -27,7 +27,7 @@ public class exercise1_starter {
     public static void main(String[] args) throws IOException {
         try {
             // TODO: Create a File object for "Exercise17_01.txt"
-            FileOutputStream text = new FileOutputStream("exercise17_01.txt");
+            FileOutputStream text = new FileOutputStream("Binary IO/exercise17_01.txt");
 
             // TODO: Generate and write 100 random integers
             for (int i = 0 ; i < 100 ; i++) {

@@ -38,7 +38,7 @@ public class exercise2_starter {
         // PART 1: WRITE DATA
         try {
             // TODO: Create DataOutputStream for "Exercise17_02.dat"
-            DataOutputStream output = new DataOutputStream(new FileOutputStream("Exercise17_02.dat"));
+            DataOutputStream output = new DataOutputStream(new FileOutputStream("Binary IO/Exercise17_02.dat"));
 
             // TODO: Write the array of integers
             // Hint: Loop through the array and use writeInt() for each element
@@ -60,7 +60,7 @@ public class exercise2_starter {
 
             // PART 2: READ DATA
             // TODO: Create DataInputStream for "Exercise17_02.dat"
-            DataInputStream input = new DataInputStream(new FileInputStream("Exercise17_02.dat"));
+            DataInputStream input = new DataInputStream(new FileInputStream("Binary IO/Exercise17_02.dat"));
                     
             // TODO: Read the array of integers
             // Hint: Create a new array and use readInt() five times
