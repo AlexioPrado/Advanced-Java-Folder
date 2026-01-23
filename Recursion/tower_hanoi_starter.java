@@ -16,9 +16,9 @@
  *   2. Move the largest disk from source to destination
  *   3. Move n-1 disks from auxiliary to destination (using source as helper)
  * 
- * @author Your Name
+ * @author Marcus Prado
  */
-public class tower_hanoi_starter {
+public class towerHanoi {
     
     // Part 3: Move counter (you'll add this)
     private static int moveCount = 0;
@@ -42,11 +42,11 @@ public class tower_hanoi_starter {
     public static void moveDisks(int n, char source, char destination, char auxiliary) {
             // TODO: Implement base case
         if (n == 1) {
-            
+            System.out.println("Move " + n + " from " + source + " to " + destination);
         } else {
             // TODO: Implement recursive case (3 steps)
             moveDisks(n-1, source, auxiliary, destination);
-            moveDisks(n, source, destination, auxiliary);
+            System.out.println("move " + n + " from " + source + " to " + destination);
             moveDisks(n-1, auxiliary, destination, source);
         }
         
