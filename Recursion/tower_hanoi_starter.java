@@ -29,11 +29,12 @@ import java.util.List;
  * @author Marcus Prado
  */
  
-public class towerHanoi {
+public class tower_hanoi_starter {
     
     // Part 3: Move counter (you'll add this)
     private static int moveCount = 0;
     
+    // Create each peg as an array
     static ArrayList<Integer> pegA = new ArrayList<>();
     static ArrayList<Integer> pegB = new ArrayList<>();
     static ArrayList<Integer> pegC = new ArrayList<>();
@@ -54,18 +55,23 @@ public class towerHanoi {
      * @param destination the destination peg (e.g., 'C')
      * @param auxiliary the auxiliary peg (e.g., 'B')
      */
+     
     public static void moveDisks(int n, char source, char destination, char auxiliary) {
             // TODO: Implement base case
         if (n == 1) {
-            System.out.println("Move " + n + " from " + source + " to " + destination);
+            System.out.println("\nMove disk " + n + " from " + source + " to " + destination);
+            //Call displayTower to display move
             displayTowers(source, destination);
+            //Increase moveCount
             moveCount++;
         } else {
             // TODO: Implement recursive case (3 steps)
             moveDisks(n-1, source, auxiliary, destination);
-            System.out.println("move " + n + " from " + source + " to " + destination);
-            moveCount++;
+            System.out.println("\nMove disk " + n + " from " + source + " to " + destination);
+            //Call displayTower to display move
             displayTowers(source, destination);
+            //Increase moveCount
+            moveCount++;
             moveDisks(n-1, auxiliary, destination, source);
         }
         
@@ -86,10 +92,13 @@ public class towerHanoi {
      * Hint: You'll need to track which disks are on which peg.
      * Consider using ArrayList<Integer> for each peg.
      */
+    
     public static void displayTowers(char source, char destination) {
-        ArrayList<Integer> src;
-        ArrayList<Integer> des;
+        //Create copies of the source and destination peg. Initialized with a placement holder
+        ArrayList<Integer> src = pegA;
+        ArrayList<Integer> des = pegC;
         
+        //Based on the char of the source and destination, replace value with correct peg.
         switch (source) {
             case 'A':
                 src = pegA;
@@ -105,32 +114,39 @@ public class towerHanoi {
         }
         switch (destination) {
             case 'A':
-                src = pegA;
+                des = pegA;
                 break;
             case 'B':
-                src = pegB;
+                des = pegB;
                 break;
             case 'C':
-                src = pegC;
+                des = pegC;
                 break;
             default:
                 System.out.println("HELP ME");
         }
         
-        //src.add(des.get(des.size()-1));
-        //des.remove(des.size()-1);
+        //Add the highest disk on the source peg(Last value of list) and add it to the destination peg
+        des.add(src.get(src.size()-1));
+        //Remove the highest disk on the source peg
+        src.remove(src.size()-1);
         
         // TODO: Implement tower visualization
         System.out.println("--- Tower State ---");
         // Display pegs A, B, C and their disks
+        System.out.println("A: " + pegA);
+        System.out.println("B: " + pegB);
+        System.out.println("C: " + pegC);
         
     }
+    
     /**
      * Part 2a: Populate towers
      * Add the amount of discs needed starting at peg A
      * 
      */
     public static void populateTowers(int n, ArrayList<Integer> tower){
+        //Based on the amount of disks, add the disks by largest to smallest
         for (int i = n; i > 0; i--){
             tower.add(i);
         }
@@ -172,17 +188,33 @@ public class towerHanoi {
         moveCount = 0;
         // Solve the puzzle
         moveDisks(n, 'A', 'C', 'B');
-        // Rest pegs
+        // Reset pegs
         pegC.clear();
         // Display statistics
         printStatistics(n);
         
         // Tower of Hanoi with 4 disks
         System.out.println("\n\n=== Try with 4 disks ===");
-        //populateTowers(4, pegA);
+        populateTowers(4, pegA);
         moveCount = 0;
         moveDisks(4, 'A', 'C', 'B');
         pegC.clear();
         printStatistics(4);
+        
+        //Tower of Hanoi with 5 disks
+        System.out.println("\n\n=== Try with 5 disks ===");
+        populateTowers(5, pegA);
+        moveCount = 0;
+        moveDisks(5, 'A', 'C', 'B');
+        pegC.clear();
+        printStatistics(5);
+        
+        //Tower of Hanoi with 7 disks
+        System.out.println("\n\n=== Try with 7 disks ===");
+        populateTowers(7, pegA);
+        moveCount = 0;
+        moveDisks(7, 'A', 'C', 'B');
+        pegC.clear();
+        printStatistics(7);
     }
 }
