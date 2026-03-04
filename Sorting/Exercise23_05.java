@@ -1,7 +1,7 @@
 /*
  * Marcus Prado
  * 3/3/26
- * Program: Merge Sort w/o temporary lists
+ * Program: Merge Sort w/o temporary lists and only can be used for merging lists
  */
 
 public class Exercise23_05 {
